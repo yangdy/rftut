@@ -1,4 +1,10 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url, include
+from rest_framework.routers import DefaultRouter
+from snippets.views import SnippetViewSet, UserViewSet
+
+router = DefaultRouter()
+router.register(r'snippets', SnippetViewSet)
+router.register(r'users', UserViewSet)
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -14,6 +20,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url('^', include('snippets.urls')),
+    url('^', include(router.urls)),
     url('^auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
