@@ -1,13 +1,7 @@
-val app = angular.module('djangoApp', []);
+var djangoApp = angular.module('djangoApp', []);
 
-app.config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('{[{');
-  $interpolateProvider.endSymbol('}]}');
+djangoApp.controller('HelloController', function($scope) {
+  var message = {};
+  message.greeting = 'hello, angularjs!';
+  $scope.message = message;
 });
-
-app.controller('HelloController', function($scope) {
-  var someText = {};
-  someText.message = 'You are started your app';
-  $scope.someText = someText;
-});
-
